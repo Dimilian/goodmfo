@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="dataSourceStorageLocal">
+    <data-source name="PostgreSQL - goodmfo@localhost" uuid="1ba4ca42-66a2-4820-b5e7-238e66ee5ab5">
+      <secret-storage>master_key</secret-storage>
+      <user-name>postgres</user-name>
+    </data-source>
+    <data-source name="Django default" uuid="a75ac491-ce0a-4cf2-aaa2-10486d7d19f8">
+      <user-name>postgres</user-name>
+      <user-password>df9bdf98df99df9e</user-password>
+      <schema-pattern>goodmfo.pg_catalog goodmfo.public</schema-pattern>
+      <default-schemas>goodmfo.public</default-schemas>
+    </data-source>
+  </component>
+</project>

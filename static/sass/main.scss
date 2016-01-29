@@ -1,0 +1,274 @@
+@import 'media.scss';
+@import 'fonts.scss';
+@import 'color.scss';
+@import 'variables.scss';
+@import 'navbar.scss';
+@import 'sideNav.scss';
+@import 'waves.scss';
+
+$orange: #e94a2b;
+$dgrey: #444;
+$grey: #999;
+$lgrey: #d5d5d5;
+$llgrey: #f5f5f5;
+
+html{
+  font-family:'latoregular', Helvetica Neue, Helvetica, Arial;
+}
+
+body{
+  background: url(../img/bg_ptn.png);
+}
+
+header{
+
+}
+
+h1{
+  font-family:'latobold';
+}
+
+.center{
+  text-align: center;
+}
+
+.txt-right{
+  text-align: right;
+}
+
+.txt-left{
+  text-align: left;
+}
+
+.main-content, .top-main-content{
+  margin-left: 0;
+  @include respond-to(desktops){
+    margin-left: 240px;
+  }
+}
+
+.bg-llgrey{
+  background: $llgrey;
+}
+
+.ib{
+  display: inline-block !important;
+}
+
+.ib.vi{
+  vertical-align: middle;
+}
+
+.mt0{
+  margin-top: 0 !important;
+}
+
+.block{
+  &_p20{
+    padding: 20px;
+  }
+  &_ptb10{
+    padding: 10px 0;
+  }
+  &_p0{
+    padding: 0;
+  }
+  &_white{
+    background: #fff;
+  }
+  &_shadow{
+    box-shadow: 0 0 3px rgba(0,0,0,.3);
+  }
+  &_calc-result{
+    border-right:1px solid $lgrey;
+    background: $llgrey;
+    padding: 10px 0;
+    @include respond-to(mobile){padding:5px 0;}
+    &:last-child{
+      border-right:none;
+    }
+  }
+  &_margin-vert{
+    margin: 10px 0;
+  }
+}
+
+.side-nav a.active{
+  background: $orange;
+  color:#fff !important;
+  i{
+    color:#fff;
+  }
+  &:hover{
+    background: $orange;
+    i{
+      color:#fff !important;
+    }
+  }
+}
+
+.span{
+  &__title{
+    display:block;
+    &_1{
+      font-size: 3rem;
+      @include respond-to(mobile){font-size: 2.5rem;}
+    }
+    &_2{
+      font-size: 2.3rem;
+      @include respond-to(mobile){font-size: 2rem;}
+    }
+    &_3{
+      font-size: 2rem;
+      @include respond-to(mobile){font-size: 1.5rem;}
+    }
+    &_h{
+      margin:10px 0 20px;
+    }
+  }
+  &_grey{
+    color:$grey;
+  }
+}
+
+i.medium {
+    font-size: 4rem;
+}
+
+.left{
+  float: left;
+}
+
+.right{
+  float: right;
+}
+
+.navbar-nav{
+  margin-top: 0 !important;
+  &>li>a{
+    padding-top: 15px;
+    padding-bottom: 15px;
+  }
+}
+
+.topbar{
+  .nav{
+  &>li{
+    &>a{
+      display: inline-block;
+      color:#fff;
+      font-family:'latobold';
+      &:hover{
+        background: darken($orange, 10%);
+      }
+    }
+  }
+}
+}
+
+.side-nav li{
+  padding: 0;
+}
+
+.topbar{
+  height: 50px;
+  background: $orange;
+  &__title{
+    display: inline-block;
+    line-height: 30px;
+    padding: 10px 15px;
+    font-family:'latoheavy';
+    color:#fff;
+    float:left;
+  }
+  i{
+    padding: 5px;
+    color:#fff;
+    &:hover{
+      background: darken($orange, 10%);
+    }
+  }
+}
+
+.brand-logo{
+  padding:35px 10px;
+}
+
+ul{
+  list-style-type:none;
+}
+.side-nav{
+  padding-left: 0 !important;
+  i{
+    float:left;
+    color:$lgrey;
+    padding:12px;
+  }
+}
+
+
+nav{
+  .navbar-brand{
+    height: auto;
+  }
+  .nav>li{
+    &>a{
+      padding: 30px 15px;
+    }
+  }
+}
+
+.side-nav{
+  background: $dgrey;
+  &.fixed a{
+    font-size: 1.3rem;
+    font-family:'latobold';
+    color:$lgrey;
+    height: 80px;
+    padding: 10px 0 !important;
+    &:hover{
+      color:$dgrey;
+      text-decoration: none;
+      i{
+        color:$grey;
+      }
+    }
+  }
+}
+
+.pay-variant{
+  display: block;
+  padding:20px 20px;
+  color:$dgrey;
+  border-top:1px solid $lgrey;
+  i{
+    margin-right: 10px;
+    font-size: 3.2rem;
+    color:$orange;
+  }
+}
+
+
+.main-content{
+  margin-top:30px;
+}
+
+.list{
+  &_li{
+    display: block;
+    padding: 5px 0;
+  }
+}
+
+.span{
+  &_key{
+    display: block;
+    color:$orange;
+    font-size: 1.2rem;
+  }
+  &_value{
+    font-size: 1.6rem;
+    font-family:'latoheavy';
+    color:$grey;
+  }
+}
