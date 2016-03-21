@@ -38,14 +38,14 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'goodmfo',
-    'cabinet',
+    'loanhistory',
     'getmoney'
 )
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
+    # 'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
@@ -66,7 +66,7 @@ TEMPLATES = [
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
-                'django.contrib.messages.context_processors.messages',
+                'utils.context_processors.mfo_processor',
             ],
         },
     },
@@ -80,11 +80,11 @@ WSGI_APPLICATION = 'lk.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'goodmfo',
-        'USER': 'postgres',
-        'PASSWORD': '1234',
-        'HOST': '', # Set to empty string for localhost.
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'goodmfo_main',
+        'USER': 'goodmfo_main',
+        'PASSWORD': 'fghRTY456',
+        'HOST': 'goodmfo.ru', # Set to empty string for localhost.
         'PORT': '', # Set to empty string for default.
     }
 }

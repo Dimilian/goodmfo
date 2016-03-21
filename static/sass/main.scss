@@ -2,9 +2,16 @@
 @import 'fonts.scss';
 @import 'color.scss';
 @import 'variables.scss';
+@import 'global.scss';
 @import 'navbar.scss';
 @import 'sideNav.scss';
 @import 'waves.scss';
+@import 'table_of_contents.scss';
+@import 'tabs.scss';
+@import 'form.scss';
+@import 'typography.scss';
+@import 'cards.scss';
+@import 'buttons.scss';
 
 $orange: #e94a2b;
 $dgrey: #444;
@@ -13,11 +20,11 @@ $lgrey: #d5d5d5;
 $llgrey: #f5f5f5;
 
 html{
-  font-family:'latoregular', Helvetica Neue, Helvetica, Arial;
+  //font-family:'latoregular', Helvetica Neue, Helvetica, Arial;
 }
 
 body{
-  background: url(../img/bg_ptn.png);
+  //background: url(../img/bg_ptn.png);
 }
 
 header{
@@ -25,7 +32,7 @@ header{
 }
 
 h1{
-  font-family:'latobold';
+  //font-family:'latobold';
 }
 
 .center{
@@ -111,17 +118,25 @@ h1{
   &__title{
     display:block;
     &_1{
-      font-size: 3rem;
+      font-size: 2rem;
       @include respond-to(mobile){font-size: 2.5rem;}
     }
     &_2{
-      font-size: 2.3rem;
+      font-size: 1.7rem;
       @include respond-to(mobile){font-size: 2rem;}
     }
     &_3{
-      font-size: 2rem;
+      font-size: 1.2rem;
       @include respond-to(mobile){font-size: 1.5rem;}
     }
+    &_underline{
+        border-bottom: 1px solid #d5d5d5;
+        text-transform: uppercase;
+        font-size: 1em;
+        font-weight: bold;
+        padding-bottom: 10px;
+        color: rgba(68, 68, 68, 0.39);
+  }
     &_h{
       margin:10px 0 20px;
     }
@@ -182,7 +197,7 @@ i.medium {
     float:left;
   }
   i{
-    padding: 5px;
+    padding: 11px;
     color:#fff;
     &:hover{
       background: darken($orange, 10%);
@@ -202,7 +217,7 @@ ul{
   i{
     float:left;
     color:$lgrey;
-    padding:12px;
+    padding:16px;
   }
 }
 
@@ -221,8 +236,7 @@ nav{
 .side-nav{
   background: $dgrey;
   &.fixed a{
-    font-size: 1.3rem;
-    font-family:'latobold';
+    font-size: 1rem;
     color:$lgrey;
     height: 80px;
     padding: 10px 0 !important;
@@ -236,15 +250,36 @@ nav{
   }
 }
 
+.payvar_result{
+  display:none;
+}
+
 .pay-variant{
   display: block;
-  padding:20px 20px;
+  padding:10px;
   color:$dgrey;
-  border-top:1px solid $lgrey;
+  cursor:pointer;
+  //border-top:1px solid $lgrey;
   i{
     margin-right: 10px;
-    font-size: 3.2rem;
+    font-size: 2.2rem;
+    color:$lgrey;
+  }
+  &:hover{
     color:$orange;
+    background: $llgrey;
+    i{
+      color:$orange;
+      background: $llgrey;
+    }
+  }
+  &_active{
+    color:$orange;
+    background: $llgrey;
+    i{
+      color:$orange;
+      background: $llgrey;
+    }
   }
 }
 
@@ -271,4 +306,67 @@ nav{
     font-family:'latoheavy';
     color:$grey;
   }
+}
+
+.tab-content{
+  background: #fff;
+    border: 1px solid #d5d5d5;
+    padding: 30px;
+    border-top: none;
+}
+
+[type="checkbox"]:checked + label:before{
+  border-top: transparent;
+  border-top: transparent;
+  border-right: 2px solid $orange;
+  border-bottom:2px solid  $orange;
+}
+
+.row-flex, .row-flex > div[class*='col-'] {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    flex:1 1 auto;
+}
+
+.row-flex-wrap {
+	-webkit-flex-flow: row wrap;
+    align-content: flex-start;
+    flex:0;
+}
+
+.row-flex > div[class*='col-'] {
+	 margin:-.2px; /* hack adjust for wrapping */
+}
+
+.login-form{
+  &__header{
+    display: block;
+    margin-bottom: 30px;
+  }
+  &__wrap{
+    padding:20px;
+    background: #fff;
+    margin:0 auto;
+    width:350px;
+    input{
+      margin-bottom: 10px;
+    }
+    label{
+      font-family:latolight;
+    }
+    .btn{
+      background: $orange;
+      color:#fff;
+    }
+    .alert{
+      margin-bottom: 0 !important;
+    }
+  }
+  &__body{
+    background: url(../img/bg_ptn_grey.png) repeat;
+  }
+
 }

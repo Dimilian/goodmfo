@@ -7,50 +7,57 @@
         {% verbatim %}
             <div class="row">
                 <div class="col-sm-12 col-lg-6">
-                    <div class="block block_white block_shadow block_p20">
-                        <span class="span__title span__title_2 span__title_h">Выберите сумму перевода и срок займа</span>
+                    <div class="block">
+                        <span class="span__title span__title_underline span__title_h">Выберите сумму перевода и срок займа</span>
                         <span class="span__title span__title_3 span_grey">Сумма</span>
-                        <div range-slider min="calc.summ.min" max="calc.summ.max" step="{{ calc.summ.step }}" pin-handle="min" model-max="calc.summ.current"></div>
-                        <span class="span__title span__title_1 txt-right">{{ calc.summ.current }} <span class="span__title_3 span_grey">₽</span></span>
+                        <div range-slider min="summ.min" max="summ.max" step="{{ summ.step }}" pin-handle="min" model-max="summ.current"></div>
+                        <span class="span__title span__title_1 txt-right">{{ summ.current }} <span class="span__title_3 span_grey">₽</span></span>
 
                         <span class="span__title span__title_3 span_grey">Срок</span>
-                        <div range-slider min="calc.term.min" max="calc.term.max" step="{{ calc.term.step }}" pin-handle="min" model-max="calc.term.current"></div>
-                        <span class="span__title span__title_1 txt-right">{{ calc.term.current }}<span class="span__title_3 span_grey"> {{ calc.cases(calc.term.current, calc.term.words) }} </span></span>
+                        <div range-slider min="term.min" max="term.max" step="{{ term.step }}" pin-handle="min" model-max="term.current"></div>
+                        <span class="span__title span__title_1 txt-right">{{ term.current }}<span class="span__title_3 span_grey"> {{ cases(term.current, term.words) }} </span></span>
 
+                        <p>
+                          <input type="checkbox" id="is_pensioner" ng-model="is_pensioner"/>
+                          <label for="is_pensioner">Пенсионное удостоверение</label>
+                        </p>
                         <div class="row">
-                            <div class="col-sm-12 block_margin-vert">
+                            <div class="col-sm-12 block_margin-vert" ng-if="!programNotFound">
                                 <div class="col-sm-4 center block_calc-result">
                                     <span class="span__title span_grey calc-result__option">Сумма перевода</span>
-                                    <span class="span__title span__title_2 calc-result__option">{{ calc.summ.current }} <span class="span__title_3 span_grey">₽</span></span>
+                                    <span class="span__title span__title_2 calc-result__option">{{ summ.current }} <span class="span__title_3 span_grey">₽</span></span>
                                 </div>
                                 <div class="col-sm-4 center block_calc-result">
                                     <span class="span__title span_grey calc-result__option">Ставка</span>
-                                    <span class="span__title span__title_2 calc-result__option">{{ productCurrent.rate[0] }} %</span>
+                                    <span class="span__title span__title_2 calc-result__option">{{ rate }} %</span>
                                 </div>
                                 <div class="col-sm-4 center block_calc-result">
                                     <span class="span__title span_grey calc-result__option">Сумма к возврату</span>
-                                    <span class="span__title span__title_2 calc-result__option">{{calc.calcResult(calc.summ.current, calc.term.current, productCurrent.rate[0])}} <span class="span__title_3 span_grey">₽</span></span>
+                                    <span class="span__title span__title_2 calc-result__option">{{ total }} <span class="span__title_3 span_grey">₽</span></span>
                                 </div>
                             </div>
+                            <div class="alert alert-danger center-align" ng-if="programNotFound">{{ programNotFoundError }}</div>
                         </div>
                         {% endverbatim %}
                     </div>
                 </div>
-                <div class="col-sm-12 col-lg-3">
-                    <div class="block block_white block_shadow">
-                        <span class="span__title span__title_2 span__title_h block_p20 mt0">Выберите способ получения денег</span>
+                <div class="col-sm-12 col-lg-6" >
+                    <div class="block">
+                        <span class="span__title span__title_underline span__title_h">Выберите способ получения денег</span>
 
-                        <div class="row">
+                        <div class="row payvars_block">
+                            {% for payvar in payvars %}
                             <div class="col-lg-12 col-sm-4">
-                                <div class="pay-variant"><i class="material-icons ib vi">credit_card</i><span class=" ib">Банковская карта</span> </div>
+                                <div class="pay-variant" id="{{ payvar.payvar_title }}"><i class="material-icons ib vi">{{ payvar.payvar_icon }}</i><span class=" ib">{{ payvar.payvar_name }}</span> </div>
                             </div>
-                            <div class="col-lg-12 col-sm-4">
-                                <div class="pay-variant"><i class="material-icons ib vi">account_balance</i><span class=" ib">Банковский перевод</span> </div>
-                            </div>
-                            <div class="col-lg-12 col-sm-4">
-                                <div class="pay-variant"><i class="material-icons ib vi">account_balance_wallet</i><span class=" ib">Наличные деньги</span></div>
-                            </div>
+                            {% endfor %}
                         </div>
+                        {% verbatim %}
+                        <div class="payvar_result" ng-if="!programNotFound">
+
+                        </div>
+                        {% endverbatim %}
+                    <a class="waves-effect deep-orange white-text waves-light btn" id="loan_submit">Оформить</a>
                     </div>
                 </div>
             </div>

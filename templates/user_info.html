@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+
+    <!-- Nav tabs -->
+    <ul class="nav nav-tabs">
+      <li class="active"><a href="#contactdata" data-toggle="tab">Контактные данные</a></li>
+      <li><a href="#document" data-toggle="tab">Паспортные данные</a></li>
+      <li><a href="#personaldata" data-toggle="tab">Персональные данные</a></li>
+      <li><a href="#settings" data-toggle="tab">Настройки</a></li>
+    </ul>
+
+    <!-- Tab panes -->
+    <div class="tab-content">
+      <div class="tab-pane active" id="contactdata">
+          <ul class="list">
+              <form method="POST">
+                  <div class="row">
+                      {% csrf_token %}
+                      <div class="input-field col-sm-12 col-lg-7">
+                          <label for="">Фамилия</label>
+                          <input type="text"
+                                 disabled
+                                 value="{{ client_form.surname.value }}"
+                                 name="surname" class="">
+                          <span class="form_error"></span>
+                          {% if client_form.surname.errors %}
+                              <ol>
+                                  {% for error in client_form.surname.errors %}
+                                      <li><strong>{{ error|escape }}</strong>
+                                      </li>
+                                  {% endfor %}
+                              </ol>
+                          {% endif %}
+                      </div>
+                      <div class="input-field col-sm-12 col-lg-7">
+                          <label for="">Имя</label>
+                          <input type="text"
+                                 disabled
+                                 value="{{ client_form.name.value }}"
+                                 name="name" class="">
+                          <span class="form_error"></span>
+                      </div>
+                      <div class="input-field col-sm-12 col-lg-7">
+                          <label for="">Отчество</label>
+                          <input type="text"
+                                 disabled
+                                 value="{{ client_form.patronymic.value }}"
+                                 name="patronymic" class="">
+                          <span class="form_error"></span>
+                      </div>
+                      <div class="input-field col-sm-12 col-lg-7">
+                          <label for="">E-mail</label>
+                          <input type="text"
+                                 value="{{ client_form.email.value }}"
+                                 name="email" class="">
+                          <span class="form_error"></span>
+                      </div>
+                      <div class="input-field col-sm-12 col-lg-7">
+                          <label for="">Номер телефона</label>
+                          <input type="text"
+                                 value="{{ client_form.phone.value }}"
+                                 name="phone" class="">
+                          <span class="form_error"></span>
+                      </div>
+                      <div class="input-field col-sm-12 col-lg-7">
+                          <label for="">Номер стационарного телефона</label>
+                          <input type="text"
+                                 value="{{ client_form.homephone.value }}"
+                                 name="homephone" class="">
+                          <span class="form_error"></span>
+                      </div>
+                      <div class="input-field col-sm-12 col-lg-7">
+                          <label for="">Дата рождения</label>
+                          <input type="text"
+                                 disabled
+                                 value="{{ client_form.birth.value }}"
+                                 name="birth" class="">
+                          <span class="form_error"></span>
+                      </div>
+                      <button type="submit">Ololo</button>
+                  </div>
+            </form>
+          </ul>
+      </div>
+      <div class="tab-pane" id="document">...</div>
+      <div class="tab-pane" id="personaldata">...</div>
+      <div class="tab-pane" id="settings">...</div>
+    </div>
+
+{% endblock %}

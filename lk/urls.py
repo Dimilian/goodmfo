@@ -17,12 +17,15 @@ from django.conf.urls import include, url
 from django.contrib import admin
 import getmoney.views
 import goodmfo.views
+import loanhistory.views
 import login.views
 
 urlpatterns = [
     url(r'^$', goodmfo.views.index),
-    url(r'^getmoney/', getmoney.views.calculator),
-    url(r'^clientpersonal/', goodmfo.views.userinfo),
+    url(r'^getmoney/', include('getmoney.urls')),
+    url(r'^clientpersonal/', goodmfo.views.user_personal_data, name='personal_data'),
+    url(r'^loanhistory/', loanhistory.views.loanhistory),
+    url(r'^ajax/calculate/', getmoney.views.calculate),
     url(r'^login/', 'django.contrib.auth.views.login', {'template_name': 'login.html'}),
     url(r'^logout/', 'django.contrib.auth.views.logout', {'template_name': 'login.html'}),
     url(r'^admin/', include(admin.site.urls)),

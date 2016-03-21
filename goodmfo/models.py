@@ -1,15 +1,16 @@
 from django.db import models
 from django.contrib.auth.models import User
 
+
 class UserInfo(models.Model):
-    client = models.ForeignKey(User)
+    client = models.OneToOneField(User, null=True)
     surname = models.CharField(max_length=255)
     name = models.CharField(max_length=255)
     patronymic = models.CharField(max_length=255)
-    email = models.CharField(max_length=255, null=True, blank=True)
+    email = models.EmailField(max_length=255, null=True, blank=True)
     phone = models.CharField(max_length=255)
     homephone = models.CharField(max_length=255)
-    birth = models.CharField(max_length=255)
+    birth = models.DateField(max_length=255)
     address_reg_index = models.CharField(max_length=255)
     address_reg_region = models.CharField(max_length=255)
     address_reg_district = models.CharField(max_length=255, null=True, blank=True)
@@ -36,3 +37,9 @@ class UserInfo(models.Model):
     dohod = models.CharField(max_length=255)
     izhd = models.CharField(max_length=255)
     inn = models.CharField(max_length=255, null=True, blank=True)
+    bank_ls = models.CharField(max_length=20, null=True, blank=True)
+    bank_bik = models.CharField(max_length=9, null=True, blank=True)
+
+
+    def unicode(self):
+        return '{} {} {}'.format(self.surname, self.name, self.patronymic)

@@ -1,7 +1,6 @@
 'use strict';
 
 var gulp = require('gulp'),
-	connect = require('gulp-connect'),
 	scss = require('gulp-sass'),
 	sourcemaps = require('gulp-sourcemaps'),
 	autoprefixer = require('gulp-autoprefixer'),
@@ -23,7 +22,6 @@ gulp.task('scss', function(){
 		.pipe(scss().on('error', scss.logError))
 		.pipe(sourcemaps.write('/maps/'))
 		.pipe(gulp.dest('static/css'))
-		.pipe(connect.reload());
 });
 
 
@@ -32,7 +30,7 @@ gulp.task('scss', function(){
 gulp.task('css', function () {
   gulp.src('./static/css/*.css')
   // .pipe(sourcemaps.init())
-    .pipe(connect.reload());
+
 });
 
 gulp.task('js', function () {
@@ -48,7 +46,7 @@ gulp.task('extjs', function () {
 });
 
 gulp.task('prefixe', function(){
-	gulp.src('./static/css/*.css')
+	gulp.src('./static/pre/*.css')
 	.pipe(autoprefixer({
 	    browsers: ['last 15 versions'],
 	    cascade: false

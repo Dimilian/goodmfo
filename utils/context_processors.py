@@ -1,12 +1,8 @@
-from django.conf import settings
-from goodmfo.models import UserInfo
 
-def my_vars(request):
-    user = request.user
-    if user.is_authenticated():
-        user_id = user.id
-        client = UserInfo.objects.get(client_id=user_id)
-        helloname = client.surname + ' ' + client.name
+
+def mfo_processor(request):
+    if not request.user.is_authenticated:
+        return
     return {
-        'helloname': helloname,
+        # 'user_info': request.user.userinfo,
     }

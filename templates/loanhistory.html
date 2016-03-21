@@ -4,14 +4,34 @@
 {% block content %}
 
             <div class="row">
-                <div class="col-sm-12 col-lg-8">
+                <div class="col-sm-12 col-lg-12">
                     <div class="block block_white block_shadow block_p20">
-                        {% for  %}
-                    </div>
-                </div>
-                <div class="col-sm-12 col-lg-4">
-                    <div class="block block_white block_shadow block_p20">
-                        <span class="span__title span__title_2 span__title_h">Выберите способ получения денег</span>
+                        <table class="centered striped highlight responsive-table">
+                            <thead>
+                              <tr>
+                                  <th data-field="summ">Сумма займа</th>
+                                  <th data-field="term">Срок займа</th>
+                                  <th data-field="product">Программа</th>
+                                  <th data-field="loanSumm">Итоговая сумма</th>
+                                  <th data-field="payVar">Способ получения</th>
+                                  <th data-field="date_add">Займ создан</th>
+                              </tr>
+                            </thead>
+
+                            <tbody>
+                            {% for loan in loans %}
+                              <tr>
+                                <td>{{ loan.summ }}</td>
+                                <td>{{ loan.term }}</td>
+                                <td>{{ loan.product }}</td>
+                                <td>{{ loan.loanSumm }}</td>
+                                <td>{{ loan.payVar }}</td>
+                                <td>{{ loan.date_add }}</td>
+                              </tr>
+                            {% endfor %}
+
+                            </tbody>
+                          </table>
                     </div>
                 </div>
             </div>
